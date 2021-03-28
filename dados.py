@@ -22,3 +22,22 @@ def load_access():
 
 # x, y = load_access()
 # print(x)
+
+def load_find():
+
+    X = []
+    Y = []
+
+    arq = open('cursos.csv', 'rb')
+    read = csv.reader(arq)
+
+    read.next()
+
+    for home, busca, logado, comprou in read:
+        dataset = [int(home), busca, int(logado)]
+        X.append(dataset)
+        Y.append(comprou)
+
+    return X, Y
+
+
