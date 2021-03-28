@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from dados import load_access
 
 x, y = load_access()
@@ -14,7 +16,7 @@ test = [acesso1,acesso2]
 result_predict = model.predict(test)
 print('test',result_predict)
 
-## aqui ele está treinando e testando com os mesmos dados então o resultado será alto nos acerto diferente com dados desconhecidos
+''' aqui ele está treinando e testando com os mesmos dados então o resultado será alto nos acerto diferente com dados desconhecidos'''
 
 result_x = model.predict(x)
 
