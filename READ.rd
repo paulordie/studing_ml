@@ -1,0 +1,1 @@
+O classifica_acesso.py: só roda com o python2 com sklearn instalado
