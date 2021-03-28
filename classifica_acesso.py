@@ -14,7 +14,7 @@ test = [acesso1,acesso2]
 result_predict = model.predict(test)
 print('test',result_predict)
 
-
+## aqui ele está treinando e testando com os mesmos dados então o resultado será alto nos acerto diferente com dados desconhecidos
 
 result_x = model.predict(x)
 
@@ -26,10 +26,10 @@ total_acertos = len(acertos)
 total_element = len(x)
 
 taxa_acerto = 100.0 * total_acertos / total_element
-print(taxa_acerto)
-print(total_element)
+print('taxa_acerto',taxa_acerto)
+print('total_element',total_element)
 
-print('result_x',result_x)
+# print('result_x',result_x)
 
-result_y = model.predict(y)
-print('result_y',result_y)
+# result_y = model.predict(y)
+# print('result_y',result_y)
