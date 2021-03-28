@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+#com 90% de treino e 10% para teste foi obtido 88,89% na taxa de acerto
 
 from dados import load_access
 
