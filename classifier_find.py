@@ -17,29 +17,21 @@ df_X = df[['home','busca','logado']]
 df_Y = df['comprou']
 
 X_dummies_df = pd.get_dummies(df_X)
-#Y_dummies = pd.get_dummies(Y)[1] #para pegar a coluna 1
+
 Y_dummies_df = df_Y
 
 X = X_dummies_df.values
 Y = Y_dummies_df.values
 
-#verifica numa especie de algoritmo base quais são o maiores acerto para chutes
-# acertos = len(Y)
-# erros = -(sum(Y) - len(Y))
-
 correct_base = max(Counter(Y).itervalues())
-acertos_1 = list(Y).count('sim')
-acertos_0 = list(Y).count('nao')
-print("total X[Y == 1] %d" % len(X[Y == 1]))
 taxa_correct_base = 100.0 * correct_base / len(Y)
-print("taxa de acerto base %.2f" % taxa_correct_base)
+print("taxa de acerto base Dados diretos %.2f" % taxa_correct_base)
 
 percent_train = 0.9
-#print(X)
+
 size_train = int(percent_train * len(Y))
-#print(size_train)
+
 size_test = int(len(Y) - size_train)
-#print(size_test)
 
 train_data = X[:size_train]
 train_mark = Y[:size_train]
@@ -55,9 +47,7 @@ model.fit(train_data, train_mark)
 
 result = model.predict(test_data)
 corrects = (result == test_mark)
-#print(different)
 
-#corrects = [obj for obj in different if obj == 0]
 
 total_correct = sum(corrects)
 total_elements = len(test_data)
@@ -67,3 +57,7 @@ taxa_correct = 100.0 * total_correct / total_elements
 print("taxa de acerto do algoritmo %.2f" % taxa_correct)
 #print(taxa_correct)
 print(total_elements)
+
+correct_base = max(Counter(test_mark).itervalues())
+taxa_correct_base = 100.0 * correct_base / len(test_mark)
+print("'test_mark' - taxa de acerto base %.2f" % taxa_correct_base)
