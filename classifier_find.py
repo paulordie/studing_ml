@@ -8,7 +8,8 @@ x, y = load_find()
 print(x[0])
 print(y[0])
 
-df = pd.read_csv('cursos.csv')
+# df = pd.read_csv('cursos.csv')
+df = pd.read_csv('busca.csv')
 #print(df.head())
 
 df_X = df[['home','busca','logado']]
@@ -24,8 +25,8 @@ Y = Y_dummies_df.values
 #verifica numa especie de algoritmo base quais são o maiores acerto para chutes
 # acertos = len(Y)
 # erros = -(sum(Y) - len(Y))
-acertos_1 = len(Y[Y == 1])
-acertos_0 = len(Y[Y == 0])
+acertos_1 = len(Y[Y == 'sim'])
+acertos_0 = len(Y[Y == 'nao'])
 print("total X[Y == 1] %d" % len(X[Y == 1]))
 taxa_correct_base = 100.0 * max(acertos_1, acertos_0) / len(Y)
 print("taxa de acerto base %.2f" % taxa_correct_base)
@@ -50,10 +51,10 @@ model = MultinomialNB()
 model.fit(train_data, train_mark)
 
 result = model.predict(test_data)
-different = result - test_mark
+corrects = result == test_mark
 #print(different)
 
-corrects = [obj for obj in different if obj == 0]
+#corrects = [obj for obj in different if obj == 0]
 
 total_correct = len(corrects)
 total_elements = len(test_data)
