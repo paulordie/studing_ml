@@ -24,8 +24,8 @@ Y = Y_dummies_df.values
 #verifica numa especie de algoritmo base quais são o maiores acerto para chutes
 # acertos = len(Y)
 # erros = -(sum(Y) - len(Y))
-acertos_1 = sum(Y)
-acertos_0 = len(Y) - acertos_1
+acertos_1 = len(Y[Y == 1])
+acertos_0 = len(Y[Y == 0])
 
 taxa_correct_base = 100.0 * max(acertos_1, acertos_0) / len(Y)
 print("taxa de acerto base %.2f" % taxa_correct_base)
