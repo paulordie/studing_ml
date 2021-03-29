@@ -23,16 +23,16 @@ Y = Y_dummies_df.values
 
 percent_train = 0.9
 #print(X)
-size_train = percent_train * len(Y)
+size_train = int(percent_train * len(Y))
 print(size_train)
-size_test = len(Y) - size_train
+size_test = int(len(Y) - size_train)
 print(size_test)
 
-train_data = X[:int(size_train)]
-train_mark = Y[:int(size_train)]
+train_data = X[:size_train]
+train_mark = Y[:size_train]
 
-test_data = X[int(-size_test):]
-test_mark = Y[int(-size_test):]
+test_data = X[-size_test:]
+test_mark = Y[-size_test:]
 
 
 from sklearn.naive_bayes import MultinomialNB
