@@ -21,6 +21,11 @@ Y_dummies_df = df_Y
 X = X_dummies_df.values
 Y = Y_dummies_df.values
 
+#verifica numa especie de algoritmo base quais são o maiores acerto para chutes
+acertos = len(Y)
+erros = -(sum(Y) - len(Y))
+print(erros)
+
 percent_train = 0.9
 #print(X)
 size_train = int(percent_train * len(Y))
