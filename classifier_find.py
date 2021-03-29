@@ -2,6 +2,7 @@
 
 from dados import load_find
 import pandas as pd
+from collections import Counter
 
 x, y = load_find()
 
@@ -25,10 +26,12 @@ Y = Y_dummies_df.values
 #verifica numa especie de algoritmo base quais são o maiores acerto para chutes
 # acertos = len(Y)
 # erros = -(sum(Y) - len(Y))
+
+correct_base = max(Counter(Y).itervalues())
 acertos_1 = list(Y).count('sim')
 acertos_0 = list(Y).count('nao')
 print("total X[Y == 1] %d" % len(X[Y == 1]))
-taxa_correct_base = 100.0 * max(acertos_1, acertos_0) / len(Y)
+taxa_correct_base = 100.0 * correct_base / len(Y)
 print("taxa de acerto base %.2f" % taxa_correct_base)
 
 percent_train = 0.9
@@ -51,12 +54,12 @@ model = MultinomialNB()
 model.fit(train_data, train_mark)
 
 result = model.predict(test_data)
-corrects = result == test_mark
+corrects = (result == test_mark)
 #print(different)
 
 #corrects = [obj for obj in different if obj == 0]
 
-total_correct = len(corrects)
+total_correct = sum(corrects)
 total_elements = len(test_data)
 
 taxa_correct = 100.0 * total_correct / total_elements
