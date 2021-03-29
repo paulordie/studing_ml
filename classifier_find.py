@@ -26,7 +26,7 @@ Y = Y_dummies_df.values
 # erros = -(sum(Y) - len(Y))
 acertos_1 = len(Y[Y == 1])
 acertos_0 = len(Y[Y == 0])
-
+print("total X[Y == 1] %d" % len(X[Y == 1]))
 taxa_correct_base = 100.0 * max(acertos_1, acertos_0) / len(Y)
 print("taxa de acerto base %.2f" % taxa_correct_base)
 
