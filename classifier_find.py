@@ -21,5 +21,35 @@ Y_dummies_df = df_Y
 X = X_dummies_df.values
 Y = Y_dummies_df.values
 
-print(X)
+percent_train = 0.9
+#print(X)
+size_train = percent_train * len(Y)
+print(size_train)
+size_test = len(Y) - size_train
+print(size_test)
 
+train_data = X[:int(size_train)]
+train_mark = Y[:int(size_train)]
+
+test_data = X[int(-size_test):]
+test_mark = Y[int(-size_test):]
+
+
+from sklearn.naive_bayes import MultinomialNB
+
+model = MultinomialNB()
+model.fit(train_data, train_mark)
+
+result = model.predict(test_data)
+different = result - test_mark
+print(different)
+
+corrects = [obj for obj in different if obj == 0]
+
+total_correct = len(corrects)
+total_elements = len(test_data)
+
+taxa_correct = 100.0 * total_correct / total_elements
+
+print(taxa_correct)
+print(total_elements)
